@@ -7,6 +7,17 @@ import jakarta.persistence.Id;
 
 @Entity
 public class Product {
+    @Override
+    public String toString() {
+        return "Product{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", price=" + price +
+                ", quantity=" + quantity +
+                ", description='" + description + '\'' +
+                ", review='" + review + '\'' +
+                '}';
+    }
 
     @Id
     @GeneratedValue
@@ -65,4 +76,5 @@ public class Product {
     public void setReview(String review) {
         this.review = review;
     }
+
 }

@@ -1,5 +1,6 @@
 package com.amezon.AmezonDemo.controller;
 
+import com.amezon.AmezonDemo.exception.ProductNotFoundException;
 import com.amezon.AmezonDemo.model.Product;
 import com.amezon.AmezonDemo.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,11 +30,11 @@ public class ProductController {
     }
 
     @GetMapping("/{id}")
-    public String getAllProductById(@PathVariable int id) {
+    public String getAllProductById(@PathVariable int id) throws ProductNotFoundException {
         return service.getAllProductById(id);
     }
     @PutMapping("/{id}")
-    public String updateProduct(@PathVariable int id, @RequestBody Product product) {
+    public String updateProduct(@PathVariable int id, @RequestBody Product product)throws ProductNotFoundException {
         return service.updateProduct(id,product);
     }
 }

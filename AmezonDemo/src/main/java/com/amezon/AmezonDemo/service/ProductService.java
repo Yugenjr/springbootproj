@@ -1,5 +1,6 @@
 package com.amezon.AmezonDemo.service;
 
+import com.amezon.AmezonDemo.exception.ProductNotFoundException;
 import com.amezon.AmezonDemo.model.Product;
 import com.amezon.AmezonDemo.repository.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,8 +22,7 @@ public class ProductService {
     public Product createProduct(Product product) {
         return repo.save(product);
     }
-    public String getAllProductById(int id)
-    {
+    public String getAllProductById (int id) throws ProductNotFoundException{
         Optional<Product> products = repo.findById(id);
         if(products.isPresent())
         {
@@ -30,7 +30,7 @@ public class ProductService {
             return obj.toString();
         }
         else {
-            return "Product Not Found";
+            throw new ProductNotFoundException("Product"+id+"not found");
         }
     }
     public String updateProduct(int id,Product product)
