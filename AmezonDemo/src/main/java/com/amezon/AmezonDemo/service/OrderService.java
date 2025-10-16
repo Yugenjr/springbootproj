@@ -1,7 +1,7 @@
 package com.amezon.AmezonDemo.service;
 
 import com.amezon.AmezonDemo.exception.OrderNotFoundException;
-import com.amezon.AmezonDemo.model.Order;
+import com.amezon.AmezonDemo.model.PurchaseOrder;
 import com.amezon.AmezonDemo.repository.OrderRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -16,41 +16,41 @@ public class OrderService {
     private OrderRepository repo;
 
     // Get all orders
-    public List<Order> getAllOrders() {
+    public List<PurchaseOrder> getAllOrders() {
         return repo.findAll();
     }
 
-    // Create new order
-    public Order createOrder(Order order) {
-        return repo.save(order);
+    // Create new purchaseOrder
+    public PurchaseOrder createOrder(PurchaseOrder purchaseOrder) {
+        return repo.save(purchaseOrder);
     }
 
     // Get order by ID
-    public Order getOrderById(int id) throws OrderNotFoundException {
-        Optional<Order> order = repo.findById(id);
+    public PurchaseOrder getOrderById(int id) throws OrderNotFoundException {
+        Optional<PurchaseOrder> order = repo.findById(id);
         if (order.isPresent()) {
             return order.get();
         } else {
-            throw new OrderNotFoundException("Order with ID " + id + " not found");
+            throw new OrderNotFoundException("PurchaseOrder with ID " + id + " not found");
         }
     }
 
     // Update existing order
-    public String updateOrder(int id, Order newOrderData) {
-        Optional<Order> existingOrder = repo.findById(id);
+    public String updateOrder(int id, PurchaseOrder newPurchaseOrderData) {
+        Optional<PurchaseOrder> existingOrder = repo.findById(id);
         if (existingOrder.isPresent()) {
-            Order order = existingOrder.get();
+            PurchaseOrder purchaseOrder = existingOrder.get();
 
-            if (newOrderData.getProductName() != null) order.setProductName(newOrderData.getProductName());
-            if (newOrderData.getQuantity() != 0) order.setQuantity(newOrderData.getQuantity());
-            if (newOrderData.getPrice() != 0) order.setPrice(newOrderData.getPrice());
-            if (newOrderData.getCustomerName() != null) order.setCustomerName(newOrderData.getCustomerName());
-            if (newOrderData.getStatus() != null) order.setStatus(newOrderData.getStatus());
+            if (newPurchaseOrderData.getProductName() != null) purchaseOrder.setProductName(newPurchaseOrderData.getProductName());
+            if (newPurchaseOrderData.getQuantity() != 0) purchaseOrder.setQuantity(newPurchaseOrderData.getQuantity());
+            if (newPurchaseOrderData.getPrice() != 0) purchaseOrder.setPrice(newPurchaseOrderData.getPrice());
+            if (newPurchaseOrderData.getCustomerName() != null) purchaseOrder.setCustomerName(newPurchaseOrderData.getCustomerName());
+            if (newPurchaseOrderData.getStatus() != null) purchaseOrder.setStatus(newPurchaseOrderData.getStatus());
 
-            repo.save(order);
-            return "Order updated successfully!";
+            repo.save(purchaseOrder);
+            return "PurchaseOrder updated successfully!";
         } else {
-            return "Order not found!";
+            return "PurchaseOrder not found!";
         }
     }
 
@@ -58,9 +58,9 @@ public class OrderService {
     public String deleteOrder(int id) {
         if (repo.existsById(id)) {
             repo.deleteById(id);
-            return "Order deleted successfully!";
+            return "PurchaseOrder deleted successfully!";
         } else {
-            return "Order not found!";
+            return "PurchaseOrder not found!";
         }
     }
 }

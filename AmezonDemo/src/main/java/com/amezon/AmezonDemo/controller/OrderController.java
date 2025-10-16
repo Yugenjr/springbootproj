@@ -1,6 +1,6 @@
 package com.amezon.AmezonDemo.controller;
 
-import com.amezon.AmezonDemo.model.Order;
+import com.amezon.AmezonDemo.model.PurchaseOrder;
 import com.amezon.AmezonDemo.service.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -16,20 +16,20 @@ public class OrderController
         OrderService service;
 
         @GetMapping
-        public List<Order> getAllOrders()
+        public List<PurchaseOrder> getAllOrders()
         {
             return service.getAllOrders();
         }
         @PostMapping
-        public String createOrder(@RequestBody Order order)
+        public String createOrder(@RequestBody PurchaseOrder purchaseOrder)
         {
-            service.createOrder(order);
-            return "Order created";
+            service.createOrder(purchaseOrder);
+            return "PurchaseOrder created";
         }
         @PutMapping("/{id}")
-        public String updateOrder(@PathVariable int id, @RequestBody Order order)
+        public String updateOrder(@PathVariable int id, @RequestBody PurchaseOrder purchaseOrder)
         {
-            return service.updateOrder(id,order);
+            return service.updateOrder(id, purchaseOrder);
         }
         @DeleteMapping("/{id}")
         public String deleteOrder(@PathVariable int id)

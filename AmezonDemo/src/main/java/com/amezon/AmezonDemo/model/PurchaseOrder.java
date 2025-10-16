@@ -3,7 +3,7 @@ package com.amezon.AmezonDemo.model;
 import jakarta.persistence.*;
 
 @Entity
-public class Order {
+public class PurchaseOrder {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -36,7 +36,7 @@ public class Order {
 
     @Override
     public String toString() {
-        return "Order{" +
+        return "PurchaseOrder{" +
                 "id=" + id +
                 ", productName='" + productName + '\'' +
                 ", quantity=" + quantity +
