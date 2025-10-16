@@ -1,24 +1,20 @@
 package com.amezon.AmezonDemo.model;
-
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 @Entity
-public class Product {
-    @Override
-    public String toString() {
-        return "Product{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", price=" + price +
-                ", quantity=" + quantity +
-                ", description='" + description + '\'' +
-                ", review='" + review + '\'' +
-                '}';
-    }
-
+public class Product
+{
+    // @Override
+//    public String toString() {
+//        return "Product{" +
+//                "id=" + id +
+//                ", name='" + name + '\'' +
+//                ", price=" + price +
+//                ", quantity=" + quantity +
+//                ", description='" + description + '\'' +
+//                ", review='" + review + '\'' +
+//                '}';
+//    }
     @Id
     @GeneratedValue
     private int id;
@@ -29,6 +25,15 @@ public class Product {
     private String description;
     private String review;
 
+    @ManyToOne
+    @JoinColumn(name="order_id")
+    private Order order;
+    public Order getOrder() {
+        return order;
+    }
+    public void setOrder(Order order) {
+        this.order = order;
+    }
     public int getId() {
         return id;
     }
