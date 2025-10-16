@@ -25,8 +25,8 @@ public class Product
     private String description;
     private String review;
 
-    @ManyToOne
-    @JoinColumn(name="order_id")
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name="purchase_Order")
     private PurchaseOrder purchaseOrder;
     public PurchaseOrder getOrder() {
         return purchaseOrder;
@@ -83,3 +83,5 @@ public class Product
     }
 
 }
+
+// Variable name : purchaseOrder

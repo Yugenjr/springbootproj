@@ -9,7 +9,7 @@ import java.util.List;
 
 
 @RestController
-    @RequestMapping
+@RequestMapping("/order")
 public class OrderController
     {
         @Autowired
