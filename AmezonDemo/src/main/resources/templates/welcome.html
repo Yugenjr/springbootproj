@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Welcome</title>
+</head>
+<body>
+<img src="https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg" alt="Amazon Logo" width="300">
+<h1>Welcome</h1>
+
+<div>
+    <a th:href="@{/product}">View Products</a> |
+    <a th:href="@{/product/new}">Add Product</a>
+</div>
+</body>
+</html>
